@@ -1,10 +1,14 @@
 import {defineConfig} from "vite";
 import vue from "@vitejs/plugin-vue";
+import viteSvgToWebfont from 'vite-svg-2-webfont'
 import {codeInspectorPlugin} from 'code-inspector-plugin'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-    plugins: [vue(), codeInspectorPlugin({
+    plugins: [vue(), viteSvgToWebfont({
+        context: path.resolve(__dirname, 'src', 'icons'),
+    }), codeInspectorPlugin({
         bundler: 'vite',
         showSwitch: false,
     })],
